@@ -6,7 +6,7 @@ async function getAllSongs() {
     const allSongs = await db.any('SELECT * FROM songs')
     return allSongs
   } catch (error) {
-      throw error
+      return error
   }
 }
 
@@ -28,8 +28,18 @@ async function createSong(song) {
   }
 }
 
+
+async function deleteSong(id) {
+  try {
+    const deletedSong = await db.one('DELETE FROM songs WHERE id=$1 RETURNING *', id)
+    return deletedSong
+  } catch(error) {
+      throw error
+  }
+}
 module.exports = {
   getAllSongs,
   getSong,
-  createSong
+  createSong,
+  deleteSong
 }

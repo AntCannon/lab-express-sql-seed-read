@@ -6,7 +6,8 @@ const songs = express.Router()
 const { 
   getAllSongs,
   getSong,
-  createSong
+  createSong,
+  deleteSong
 } = require('../queries/song.js')
 
 // middleware
@@ -14,11 +15,10 @@ const {
 
 // index
 songs.get('/', async (req, res) => {
-  try {
-    const allSongs = await getAllSongs()
+  const allSongs = await getAllSongs()
+  if (allSongs[0]) {
     res.status(200).json(allSongs)
-  } catch (error) {
-      console.log(error)
+  } else {
       res.status(500). json({ error: 'server error'})
   }
 })
@@ -42,6 +42,17 @@ songs.post('/', async (req, res) => {
     res.status(200).json(newSong)
   } catch(error) {
       res.status(400).json({ error: 'bad request'})
+  }
+})
+
+// delete song
+songs.delete('/:id', async (req, res) => {
+  const { id } = req.params
+  try {
+    const deletedSong = await deleteSong(id)
+    res.status(200).json(deletedSong)
+  } catch(error) {
+    res.status(404).json({error: `No song with the id ${id} exists.`})
   }
 })
 
