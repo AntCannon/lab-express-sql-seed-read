@@ -4,7 +4,8 @@ const songs = express.Router()
 
 // queries
 const { 
-  getAllSongs
+  getAllSongs,
+  getSong
 } = require('../queries/song.js')
 
 // middleware
@@ -19,6 +20,18 @@ songs.get('/', async (req, res) => {
       console.log(error)
       res.status(500). json({ error: 'server error'})
   }
+})
+
+// show
+songs.get('/:id', async (req, res) => {
+  const { id } = req.params
+  try {
+    const oneSong = await getSong(id)
+    res.json(oneSong)
+  } catch(error) {
+      console.log(error)
+      res.status(404).json({ error: `Song with id ${id} not found.`})
+  } 
 })
 
 module.exports = songs
