@@ -3,7 +3,7 @@
 INSERT INTO
   songs (
     name, artist, album, time, is_favorite
-  );
+  )
 VALUES
   ('Song 1', 'Artist 1', 'Album 1', '1:11', 'false'),
   ('Song 2', 'Artist 2', 'Album 2', '2:22', 'false'),

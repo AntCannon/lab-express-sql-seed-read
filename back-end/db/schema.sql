@@ -3,7 +3,7 @@ CREATE DATABASE songs_db;
 
 \c songs_db
 
-CREATE TABLE songs_db (
+CREATE TABLE songs (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   artist VARCHAR(255) NOT NULL,

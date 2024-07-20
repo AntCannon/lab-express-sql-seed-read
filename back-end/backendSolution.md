@@ -18,3 +18,6 @@ touch `resource`Controller.js
 ### set up seed
 ### set up config
 npm i pg-promise
+
+## Set up queries
+
