@@ -28,6 +28,16 @@ async function createSong(song) {
   }
 }
 
+// nikedas
+async function createLike(favorite) {
+  try {
+    const newFavorite = await db.one('INSERT INTO favorites (user_id, shoe_id) VALUES ($1, $2) RETURNING *', [favorite.user_id, favorite.shoe_id])
+    return newFavorite
+  } catch(error) {
+      throw error
+  }
+}
+
 
 async function deleteSong(id) {
   try {
@@ -37,9 +47,26 @@ async function deleteSong(id) {
       throw error
   }
 }
+
+async function updateSong(id, song) {
+  const {
+    name,
+    artist,
+    album,
+    time,
+    is_favorite
+  } = song
+  try {
+    const updatedSong = await db.one('UPDATE songs SET name=$1, artist=$2, album=$3, time=$4, is_favorite=$5 WHERE id=$6 RETURNING *', [name, artist, album, time, is_favorite, id])
+    return updatedSong
+  } catch(error) {
+      throw error
+  }
+}
 module.exports = {
   getAllSongs,
   getSong,
   createSong,
-  deleteSong
+  deleteSong,
+  updateSong
 }

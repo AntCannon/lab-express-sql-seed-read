@@ -8,7 +8,6 @@ const app = express()
 // controllers
 const songController = require('./controllers/songController.js')
 
-
 // middleware
 app.use(cors())
 app.use(express.json())
