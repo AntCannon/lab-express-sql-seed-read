@@ -1,8 +1,11 @@
+import './Songs.css'
 import { useState, useEffect, useContext } from 'react'
-import { SongsContext } from '../Context/Context.js'
 
 // components
 import Song from './Song.jsx'
+
+// context
+import { SongsContext } from '../Context/Context.js'
 
 // services 
 import { fetchAllSongs } from '../../Services/songs.services.js'
@@ -26,9 +29,11 @@ export default function Songs() {
   return (
     <div>
       Songs
-      {songs.map(song => (
-        <Song song={song} key={song.id} />
-      ))}
+      <section className='songs'>
+        {songs.map(song => (
+          <Song song={song} key={song.id} />
+        ))}
+      </section>
     </div>
   )
 }
