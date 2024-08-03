@@ -1,14 +1,19 @@
 import './Nav.css'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Nav() {
   return (
     <nav>
       <div>
-        Logo
+        <Link to='/songs'>
+          Logo
+        </Link>
       </div>
       <div>
-        New Song
+        <Link to='/songs/new'>
+          New Song
+        </Link>
       </div>
     </nav>
   )
