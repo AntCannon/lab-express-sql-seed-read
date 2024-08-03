@@ -1,3 +1,4 @@
+import './Song.css'
 import React from 'react'
 
 export default function Song({
@@ -12,7 +13,7 @@ export default function Song({
   } = song
 
   return (
-    <div>
+    <div className="song-card">
       {name}
     </div>
   )
