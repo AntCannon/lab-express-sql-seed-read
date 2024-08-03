@@ -1,0 +1,12 @@
+.song-form {
+  width: 80%;
+  margin: 0 auto;
+  text-align: left;;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+label p {
+  margin: 0;
+}
