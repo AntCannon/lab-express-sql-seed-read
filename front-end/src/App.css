@@ -6,6 +6,11 @@
 }
 
 main {
+  height: fit-content;
   display: grid;
   grid-template-columns: 1fr 3fr;
+}
+
+.footer-height {
+  height: 75px;
 }

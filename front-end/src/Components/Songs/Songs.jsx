@@ -26,8 +26,6 @@ export default function Songs() {
     getAllSongs()
   }, [])
 
-  console.log(songs)
-
   return (
     <div>
       Songs

@@ -20,10 +20,8 @@ export async function createSong(payload) {
   try {
     const res = await fetch(`${SONGS_API}/new`, method)
     const song = await res.json()
-    console.log(song)
     return song
   } catch (error) {
-    console.log(error)
       throw error
   }
 }
