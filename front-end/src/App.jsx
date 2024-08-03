@@ -14,6 +14,12 @@ function App() {
         <Nav />
       </header>
       <main>
+        <aside>
+          aside
+        </aside>
+        <div className="content">
+          content
+        </div>
       <Routes>
         <Route />
       </Routes>
