@@ -1,12 +1,14 @@
 import './SongForm.css'
 import React, { useState, useEffect } from 'react'
 
+// services
+import { createSong } from '../../Services/songs.services'
 
 export default function SongForm({
   formHeader
 }) {
   const [ songForm, setSongForm ] = useState({
-    name: '',
+    title: '',
     artist: '',
     album: '',
     time: '',
@@ -19,21 +21,39 @@ export default function SongForm({
     setSongForm({...songForm, [e.target.id]: value})
   }
 
+  async function handleSubmit(e) {
+    e.preventDefault()
+
+    try {
+      createSong(songForm)
+    } catch (error) {
+        throw error
+    }
+
+    setSongForm({
+      title: '',
+      artist: '',
+      album: '',
+      time: '',
+      is_favorite: false
+    })
+  }
+
   console.log(songForm)
   
   return (
     <div>
       <h2>{formHeader}</h2>
-      <form className="song-form">
+      <form className="song-form" onSubmit={handleSubmit}>
         <label>
           <p>
-            Song name:
+            Song title:
           </p>
           <input
-            id='name'
+            id='title'
             type='text'
-            placeholder='name'
-            value={songForm.name}
+            placeholder='title'
+            value={songForm.title}
             onChange={handleInputChange}
             required
           />
@@ -93,6 +113,10 @@ export default function SongForm({
             onChange={handleInputChange}
           />
         </label>
+
+        <button type="submit">Add Song</button>
+
+
       </form>
 
 

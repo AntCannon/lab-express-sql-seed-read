@@ -5,7 +5,7 @@ export default function Song({
   song
 }) {
   const {
-    name,
+    title,
     artist,
     album,
     time,
@@ -14,7 +14,7 @@ export default function Song({
 
   return (
     <div className="song-card">
-      {name}
+      {title}
     </div>
   )
 }
