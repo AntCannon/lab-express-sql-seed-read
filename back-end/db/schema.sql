@@ -5,7 +5,7 @@ CREATE DATABASE songs_db;
 
 CREATE TABLE songs (
   id SERIAL PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
+  title VARCHAR(255) NOT NULL,
   artist VARCHAR(255) NOT NULL,
   album VARCHAR(255),
   time VARCHAR(25),

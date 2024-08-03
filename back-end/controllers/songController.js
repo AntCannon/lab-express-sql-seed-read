@@ -12,6 +12,7 @@ const {
 } = require('../queries/song.js')
 
 // middleware
+
 // validation
 
 // index
@@ -37,7 +38,7 @@ songs.get('/:id', async (req, res) => {
 })
 
 // create song
-songs.post('/', async (req, res) => {
+songs.post('/new', async (req, res) => {
   try {
     const newSong = await createSong(req.body)
     res.status(200).json(newSong)
