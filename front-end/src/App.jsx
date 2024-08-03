@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom'
 // components 
 import Nav from '../src/Components/Header/Nav.jsx'
 import Footer from '../src/Components/Footer/Footer.jsx'
+import Home from './Components/Content/Home.jsx'
 
 function App() {
 
@@ -18,11 +19,10 @@ function App() {
           aside
         </aside>
         <div className="content">
-          content
-        </div>
-      <Routes>
-        <Route />
-      </Routes>
+        <Routes>
+          <Route path='/' element={<Home />} />
+        </Routes>
+      </div>
       </main>
       <Footer />
     </>
