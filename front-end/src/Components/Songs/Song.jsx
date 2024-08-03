@@ -14,7 +14,10 @@ export default function Song({
 
   return (
     <div className="song-card">
-      {title}
+      <h2>{title}</h2>
+      <h2>{artist}</h2>
+      <h2>{album}</h2>
+      <h2>{time}</h2>
     </div>
   )
 }

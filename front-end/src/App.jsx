@@ -35,6 +35,7 @@ function App() {
           </Route>
         </Routes>
       </div>
+      
       <div className='footer-height'></div>
       </main>
 

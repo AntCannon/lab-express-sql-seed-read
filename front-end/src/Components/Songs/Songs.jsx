@@ -28,7 +28,7 @@ export default function Songs() {
 
   return (
     <div>
-      Songs
+      <h2 className='list-header'>Songs</h2>
       <section className='songs'>
         {songs.map(song => (
           <Song song={song} key={song.id} />
