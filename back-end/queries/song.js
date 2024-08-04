@@ -56,7 +56,7 @@ async function updateSong(id, song) {
     time,
     is_favorite
   } = song
-  
+
   try {
     const updatedSong = await db.one('UPDATE songs SET title=$1, artist=$2, album=$3, time=$4, is_favorite=$5 WHERE id=$6 RETURNING *', [title, artist, album, time, is_favorite, id])
     return updatedSong

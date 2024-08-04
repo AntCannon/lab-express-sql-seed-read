@@ -1,2 +1,3 @@
-import React from 'react';
-export const SongsContext = React.createContext();
+import React, { createContext } from 'react';
+export const SongsContext = createContext();
+export const UpdateContext = createContext();

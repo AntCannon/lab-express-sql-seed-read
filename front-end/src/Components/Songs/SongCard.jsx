@@ -1,10 +1,19 @@
 import './SongCard.css'
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+
+// services
+import { deleteSong } from '../../Services/songs.services'
+
+// context
+import { UpdateContext } from '../Context/Context.js'
+
 
 export default function Song({
   song
 }) {
+  const [update, setUpdate] = useContext(UpdateContext)
+
   const {
     id,
     title,
@@ -13,6 +22,19 @@ export default function Song({
     time,
     is_favorite
   } = song
+
+  // config
+  const navigate = useNavigate()
+
+  async function handleDeleteSong(idToDelete) {
+    try {
+        await deleteSong(idToDelete)
+        setUpdate(!update)
+        navigate(`/songs`)
+    } catch (error) {
+        throw error
+    }
+  }
 
   return (
     <div className="song-card">
@@ -24,7 +46,7 @@ export default function Song({
       <Link to={`/songs/${id}/edit`}>
         <button>Edit Song</button>
       </Link>
-      <button>Delete Song</button>
+      <button onClick={() => handleDeleteSong(id)}>Delete Song</button>
     </div>
   )
 }

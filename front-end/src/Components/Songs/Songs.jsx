@@ -5,12 +5,13 @@ import { useState, useEffect, useContext } from 'react'
 import Song from './SongCard.jsx'
 
 // context
-import { SongsContext } from '../Context/Context.js'
+import { SongsContext, UpdateContext } from '../Context/Context.js'
 
 // services 
 import { fetchAllSongs } from '../../Services/songs.services.js'
 
 export default function Songs() {
+  const [update, setUpdate] = useContext(UpdateContext)
   const [songs, setSongs] = useContext(SongsContext)
 
   async function getAllSongs() {
@@ -25,7 +26,9 @@ export default function Songs() {
 
   useEffect(() => {
     getAllSongs()
-  }, [])
+  }, [update])
+
+  console.log(update)
 
   return (
     <div>

@@ -1,7 +1,7 @@
 import './App.css'
 import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { SongsContext } from './Components/Context/Context.js'
+import { SongsContext, UpdateContext } from './Components/Context/Context.js'
 
 // components 
 import Nav from '../src/Components/Header/Nav.jsx'
@@ -16,10 +16,12 @@ import UpdateSong from './Pages/UpdateSong.jsx'
 
 function App() {
   const [ songsContext, setSongsContext ] = useState([])
+  const [ updateContext, setUpdateContext ] = useState([])
 
   return (
     <>
     <SongsContext.Provider value={[songsContext, setSongsContext]}>
+    <UpdateContext.Provider value={[updateContext, setUpdateContext]}>
       <header>
         <Nav />
       </header>
@@ -44,6 +46,7 @@ function App() {
       </main>
 
       <Footer />
+    </UpdateContext.Provider>
     </SongsContext.Provider>
     </>
   )

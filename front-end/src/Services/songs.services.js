@@ -10,6 +10,16 @@ export async function fetchAllSongs() {
   }
 }
 
+export async function fetchOneSong(id) {
+  try {
+    const res = await fetch(`${SONGS_API}/${id}`)
+    const song = await res.json()
+    return song
+  } catch (error) {
+      throw error
+  }
+}
+
 export async function createSong(payload) {
   const options = {
     method: "POST",
@@ -19,18 +29,8 @@ export async function createSong(payload) {
 
   try {
     const res = await fetch(`${SONGS_API}/new`, options)
-    const song = await res.json()
-    return song
-  } catch (error) {
-      throw error
-  }
-}
-
-export async function fetchOneSong(id) {
-  try {
-    const res = await fetch(`${SONGS_API}/${id}`)
-    const song = await res.json()
-    return song
+    const createdSong = await res.json()
+    return createdSong
   } catch (error) {
       throw error
   }
@@ -45,9 +45,22 @@ export async function updateSong(id, payload) {
 
   try {
     const res = await fetch(`${SONGS_API}/${id}`, options)
-    const song = await res.json()
-    console.log(song)
-    return song
+    const updatedSong = await res.json()
+    return updatedSong
+  } catch (error) {
+      throw error
+  }
+}
+
+export async function deleteSong(id) {
+  const options = {
+    method: "DELETE"
+  }
+
+  try {
+    const res = await fetch(`${SONGS_API}/${id}`, options)
+    const deletedSong = await res.json()
+    return deletedSong
   } catch (error) {
       throw error
   }
