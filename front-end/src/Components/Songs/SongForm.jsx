@@ -1,8 +1,9 @@
 import './SongForm.css'
 import React, { useState, useEffect } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 
 // services
-import { createSong } from '../../Services/songs.services'
+import { createSong, fetchOneSong, updateSong } from '../../Services/songs.services'
 
 export default function SongForm({
   formHeader
@@ -15,6 +16,11 @@ export default function SongForm({
     is_favorite: false
   })
 
+  // config
+  const { id } = useParams()
+  const navigate = useNavigate()
+
+  // handle form
   function handleInputChange(e) {
     const type = e.target.type
     const value = type === 'checkbox' ? e.target.checked : e.target.value
@@ -23,11 +29,19 @@ export default function SongForm({
 
   async function handleSubmit(e) {
     e.preventDefault()
-
-    try {
-      createSong(songForm)
-    } catch (error) {
-        throw error
+    if (id) {
+      try {
+        updateSong(id, songForm)
+        navigate(`/songs/${id}`)
+      } catch (error) {
+          throw error
+      }
+    } else {
+      try {
+        createSong(songForm)
+      } catch (error) {
+          throw error
+      }
     }
 
     setSongForm({
@@ -39,6 +53,22 @@ export default function SongForm({
     })
   }
 
+  // api
+
+  async function getOneSong(id) {
+    try {
+      const song = await fetchOneSong(id)
+      setSongForm(song)
+    } catch (error) {
+        throw error
+    }
+  }
+
+  useEffect(() => {
+    if (id) getOneSong(id)
+  }, [])
+
+  // dev
   console.log(songForm)
   
   return (
@@ -114,7 +144,7 @@ export default function SongForm({
           />
         </label>
 
-        <button type="submit">Add Song</button>
+        <button type="submit">{id ? 'Edit' : 'Add'} Song</button>
 
 
       </form>

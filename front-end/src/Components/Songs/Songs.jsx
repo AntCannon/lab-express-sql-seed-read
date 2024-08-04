@@ -2,7 +2,7 @@ import './Songs.css'
 import { useState, useEffect, useContext } from 'react'
 
 // components
-import Song from './Song.jsx'
+import Song from './SongCard.jsx'
 
 // context
 import { SongsContext } from '../Context/Context.js'
@@ -20,6 +20,7 @@ export default function Songs() {
     } catch (error) {
         throw error
     }
+
   }
 
   useEffect(() => {

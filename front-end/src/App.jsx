@@ -10,7 +10,9 @@ import Songs from './Components/Songs/Songs.jsx'
 
 // pages
 import Home from './Pages/Home.jsx'
+import ShowSong from './Pages/ShowSong.jsx'
 import NewSong from './Pages/NewSong.jsx'
+import UpdateSong from './Pages/UpdateSong.jsx'
 
 function App() {
   const [ songsContext, setSongsContext ] = useState([])
@@ -32,10 +34,12 @@ function App() {
           <Route path='/' element={<Home />} >
             <Route path='/songs' element={<Songs />} />
             <Route path='/songs/new' element={<NewSong />} />
+            <Route path='/songs/:id' element={<ShowSong />} />
+            <Route path='/songs/:id/edit' element={<UpdateSong />} />
           </Route>
         </Routes>
       </div>
-      
+
       <div className='footer-height'></div>
       </main>
 
