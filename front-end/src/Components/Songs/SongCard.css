@@ -3,6 +3,10 @@
   height: 250px;
   display: flex;
   flex-direction: column;
-
   border: 1px solid gray;
+}
+
+.card-flex-row {
+  display: flex;
+  gap: 20px;
 }

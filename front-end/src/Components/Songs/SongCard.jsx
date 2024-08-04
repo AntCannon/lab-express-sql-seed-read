@@ -43,10 +43,12 @@ export default function Song({
       <h2>{album}</h2>
       <h2>{time}</h2>
       <div>{is_favorite ? `❤️` : `♡`}</div>
-      <Link to={`/songs/${id}/edit`}>
-        <button>Edit Song</button>
-      </Link>
-      <button onClick={() => handleDeleteSong(id)}>Delete Song</button>
+      <div className="card-flex-row">
+        <Link to={`/songs/${id}/edit`}>
+          <button>Edit Song</button>
+        </Link>
+        <button onClick={() => handleDeleteSong(id)}>Delete Song</button>
+      </div>
     </div>
   )
 }
